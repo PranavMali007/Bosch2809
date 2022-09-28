@@ -104,5 +104,5 @@ for (a=10; a<15; a++)
 **     This file was created by Processor Expert 10.3 [05.08]
 **     for the Freescale Kinetis series of microcontrollers.
 **
-** ###################################################################
+** ##################################################################
 */
