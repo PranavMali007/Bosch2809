@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1664259141 source:c:\bgsw_ss2\code block\addsubmuldiv\main.c
+	<stdio.h>
+	<stdlib.h>
+	"myMath.h"
+
+1664259574 source:c:\bgsw_ss2\code block\addsubmuldiv\div.c
+	"myMath.h"
+	<stdio.h>
+	<stdlib.h>
+
+1664259600 c:\bgsw_ss2\code block\addsubmuldiv\mymath.h
+	"myMath.h"
+	<stdio.h>
+	<stdlib.h>
+
+1664259589 source:c:\bgsw_ss2\code block\addsubmuldiv\mul.c
+	"myMath.h"
+	<stdio.h>
+	<stdlib.h>
+
+1664259599 source:c:\bgsw_ss2\code block\addsubmuldiv\sub.c
+	"myMath.h"
+	<stdio.h>
+	<stdlib.h>
+
+1664259598 source:c:\bgsw_ss2\code block\addsubmuldiv\add.c
+	"myMath.h"
+	<stdio.h>
+	<stdlib.h>
+
