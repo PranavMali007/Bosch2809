@@ -32,15 +32,12 @@
 #include "Events.h"
 #include "Bits1.h"
 #include "BitsIoLdd1.h"
-#include "Bits2.h"
-#include "BitsIoLdd2.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
-void cc_led(unsigned char m);
-void ca_led(unsigned char m);
+void ca_cc_led(unsigned char ud);
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
@@ -68,27 +65,23 @@ int main(void)
 	for(j=0;j<0xfffff;j++);		
  }*/
   
- unsigned char i;
+ unsigned char i, j;
  int z;
  while(1)
  {
- for(i=0x8; i>0; i=i>>1)
+ for(i=0x01; i>0; i=i<<1)
  {
-	 cc_led(i);
-	 for(z=0; z<0xfffff; z++);
-	 cc_led(0);
-	 for(z=0; z<0xfffff; z++);
+	 ca_cc_led(i);
+	 for(z=0; z<0xffff; z++);
+	 
  }
- for(i=0x8; i>0; i=i>>1)
-  {
- 	 ca_led(i);
- 	 for(z=0; z<0xfffff; z++);
- 	 ca_led(0);
- 	 for(z=0; z<0xfffff; z++);
-  }
+ for(j=0x80; j>0; j=j>>1)
+ {
+	 ca_cc_led(j);
+	 for(z=0; z<0xffff; z++);
+	 
  }
-	
-
+ }
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
   #ifdef PEX_RTOS_START
@@ -100,16 +93,19 @@ int main(void)
   /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
 } /*** End of main routine. DO NOT MODIFY THIS TEXT!!! ***/
 
-void cc_led(unsigned char m)
-{
-	Bits1_PutVal(~m);
-	
-}
-void ca_led(unsigned char m)
-{
-	Bits2_PutVal(m);
-	
-}
+ void ca_cc_led(unsigned char ud)
+  {
+ 	 unsigned char ca, cc;
+ 	 ca =ud;
+ 	 ca=~ca;
+ 	 ca=ca & 0xf0;
+ 	 
+ 	 cc=ud & 0x0f;
+ 	 
+ 	 ud = ca | cc;
+ 	Bits1_PutVal(ud);
+  } 
+
 /* END ProcessorExpert */
 /*!
 ** @}
