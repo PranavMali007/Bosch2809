@@ -66,6 +66,7 @@ for(p=0;p<2;p++)
 						LCD_command(0x87);
 						LCD_data(acvar[m]);
 						LCD_delay(50);
+						LCD_command(0x0c);
 					}
 				}
 			}
